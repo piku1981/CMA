@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MovieApp.Models.Movie>
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    @*<p>
+        @Html.ActionLink("Add New Movie", "Create")
+    </p>*@
+    
+    <br/>
+    <br />
+
+    <div class="container">
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th> @Html.DisplayNameFor(model => model.Title) </th>
+                    <th> @Html.DisplayNameFor(model => model.Director) </th>
+                    <th> @Html.DisplayNameFor(model => model.ReleaseDate) </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.Title) </td>
+
+                        <td> @Html.DisplayFor(modelItem => item.Director) </td>
+
+                        <td> @Html.DisplayFor(modelItem => item.ReleaseDate) </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                            @Html.ActionLink("IMDB", "Details", new { id = item.Id }) 
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="container">
+       <table>
+           <tr>
+               <td>
+                   @Html.ActionLink("Add New Movie", "Create")
+               </td>
+           </tr>
+       </table>
+    </div>
+
+</body>
+</html>
